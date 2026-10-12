@@ -2,11 +2,10 @@
  * @see UdA n. 1: Esercitazione n. 1 - Giocanumeri
  * @author cesare sonaglia
  */
-public class Giocatore extends Thread{
+public class Giocatore implements Runnable{
     String nome;
     private String parola;
     private int punteggio;
-
     /**
      *
      * @param nome del Giocatore

@@ -17,6 +17,8 @@ public class GiocaNumeri {
 
         Giocatore g1 = new Giocatore("monica");
         Giocatore g2 = new Giocatore("paolo");
+        Therad gt =  new Thread("g1");
+        gt.start();
         g1.start();
         try{
             Thread.currentThread().sleep(5000);
