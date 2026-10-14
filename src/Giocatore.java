@@ -1,6 +1,6 @@
 /**
- * @see UdA n. 1: Esercitazione n. 1 - Giocanumeri
- * @author cesare sonaglia
+ *
+ @author cesare sonaglia
  */
 public class Giocatore implements Runnable{
     String nome;
@@ -8,7 +8,8 @@ public class Giocatore implements Runnable{
     private int punteggio;
     /**
      *
-     * @param nome del Giocatore
+     -
+     @param nome del Giocatore
      */
     public Giocatore(String nome){
         this.nome = nome;
@@ -24,34 +25,43 @@ public class Giocatore implements Runnable{
     }
 
     public void setPunteggio(int punteggio) {
-         this.punteggio = punteggio;
+        this.punteggio = punteggio;
     }
-
     /**
-     * gioca, metodo che implementa la logica del gioco e calcola il punteggio
+     - gioca, metodo che implementa la logica del gioco e calcola il punteggio
+
      */
-     public void gioca(){
-         int numero = 19;
-         String parola = "Diveritti";
-         setParola(parola);
+    public void gioca(){
+        long inizioG = System.currentTimeMillis();
+        int numero = 19;
+        String parola = "Diveritti";
+        setParola(parola);
 
-         for (int i=0; i<numero; i++) {
-             System.out.println("Giocatore : " + nome + " i: " + i);
-             try {
-                 sleep(2000);
-             } catch (InterruptedException e) {
-                 System.err.println("Errore nella transizione runnig - sleaping");
-             }
-             Thread.currentThread().yield();
+        for (int i=0; i<numero; i++) {
+            System.out.println("Giocatore : " + nome + " i: " + i);
+            try {
+                Thread.sleep(2000); // Chiamata statica a Thread.sleep()
+            } catch (InterruptedException e) {
+                System.err.println("Errore nella transizione runnig - sleaping");
+            }
+            Thread.yield();
 
-         }
-         setPunteggio(100);
-         System.out.println("Giocatore : " + nome + " parola: " + getParola() + " punteggio: " + punteggio);
-     }
-     public void comunica(){}
+        }
+        setPunteggio(100);
+        System.out.println("Giocatore : " + nome + " parola: " + getParola() + " punteggio: " + punteggio);
+
+        long fineG = System.currentTimeMillis();
+        long durataG = fineG - inizioG;
+
+        System.out.println("Durata giocatore "+ nome + durataG + " ms");
+    }
+    public void comunica(){}
 
     @Override
     public void run() {
         gioca();
     }
+
+
+
 }
