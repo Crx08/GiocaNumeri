@@ -60,15 +60,14 @@ public class GiocaNumeri {
         try{
             Thread.sleep(5000);
         }catch(InterruptedException e){
-            throw new RuntimeException(e);
+            System.err.println("Erroe: interruzione del thread durante l'attesa");
         }
-
 
         try {
             tg1.join();
             tg2.join();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.err.println("Erroe: interruzione dell'attesa dei giocatori");
         }
 
         //Thread.currentThread().sleep();
